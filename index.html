@@ -1,0 +1,55 @@
+<html>
+<head>
+ <title>Kartenanzeiger</title>
+ <link rel="stylesheet" href="leaflet/leaflet.css" />
+ <script src="leaflet/leaflet.js"></script>
+ <style>
+  body {
+   padding: 0;
+   margin: 0;
+  }
+  html, body, #map {
+   height: 100%;
+   width: 100%;
+  }
+ </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+  let map = L.map('map');
+  let currentBaseLayer;
+  let currentOverlayLayer = [];
+  let {ipcRenderer} = require('electron');
+
+  setBaseLayer = (uriTemplate, opts) => {
+    if (currentBaseLayer) {
+      currentBaseLayer.removeFrom(map)
+    }
+    currentBaseLayer = L.tileLayer(uriTemplate, opts);
+    currentBaseLayer.addTo(map)
+  };
+
+  toggleOverlayLayer = (uriTemplate, opts) => {
+    if (currentOverlayLayer[uriTemplate]) {
+      currentOverlayLayer[uriTemplate].removeFrom(map);
+      currentOverlayLayer[uriTemplate] = null
+    } else {
+      currentOverlayLayer[uriTemplate] = L.tileLayer(uriTemplate, opts);
+      currentOverlayLayer[uriTemplate].addTo(map)
+    }
+  };
+
+  ipcRenderer.on('set-base-layer', (event, arg) => {
+    setBaseLayer(arg.uriTemplate, arg.opts)
+  });
+
+  ipcRenderer.on('toggle-overlay-layer', (event, arg) => {
+    toggleOverlayLayer(arg.uriTemplate, arg.opts)
+  });
+
+  map.setView([50.733992, 7.099814], 13);
+  setBaseLayer('nothing.png')
+</script>
+</body>
+</html>

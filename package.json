@@ -1,0 +1,21 @@
+{
+  "name": "mapviewer",
+  "version": "0.0.1",
+  "description": "A simple mapviewer",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ./"
+  },
+  "author": "Josef Schugt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/penpendede/mapviewer.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.7.11",
+    "leaflet": "^1.3.1"
+  }
+}
+
+},
