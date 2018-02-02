@@ -20,37 +20,37 @@
 <script>
   let map = L.map('map')
   let currentBaseLayer
-  let currentOverlayLayer = []
+  let currentFeatureLayer = []
   let {ipcRenderer} = require('electron')
 
-  setBaseLayer = (uriTemplate, opts) => {
+  setBaseLayer = (source) => {
     if (currentBaseLayer) {
       currentBaseLayer.removeFrom(map)
     }
-    currentBaseLayer = L.tileLayer(uriTemplate, opts)
+    currentBaseLayer = L.tileLayer(source.uriTemplate, source.opts)
     currentBaseLayer.addTo(map)
   }
 
-  toggleOverlayLayer = (uriTemplate, opts) => {
-    if (currentOverlayLayer[uriTemplate]) {
-      currentOverlayLayer[uriTemplate].removeFrom(map)
-      currentOverlayLayer[uriTemplate] = null
+  toggleFeatureLayer = (source) => {
+    if (currentFeatureLayer[source.uriTemplate]) {
+      currentFeatureLayer[source.uriTemplate].removeFrom(map)
+      currentFeatureLayer[source.uriTemplate] = null
     } else {
-      currentOverlayLayer[uriTemplate] = L.tileLayer(uriTemplate, opts)
-      currentOverlayLayer[uriTemplate].addTo(map)
+      currentFeatureLayer[source.uriTemplate] = L.tileLayer(source.uriTemplate, source.opts)
+      currentFeatureLayer[source.uriTemplate].addTo(map)
     }
   }
 
   ipcRenderer.on('set-base-layer', (event, arg) => {
-    setBaseLayer(arg.uriTemplate, arg.opts)
+    setBaseLayer(arg)
   })
 
-  ipcRenderer.on('toggle-overlay-layer', (event, arg) => {
-    toggleOverlayLayer(arg.uriTemplate, arg.opts)
+  ipcRenderer.on('toggle-feature-layer', (event, arg) => {
+    toggleFeatureLayer(arg)
   })
 
   map.setView([50.733992, 7.099814], 13)
-  setBaseLayer('nothing.png')
+  setBaseLayer({'uriTemplate': 'nothing.png', 'opt': {}})
 </script>
 </body>
 </html>

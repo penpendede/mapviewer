@@ -1,0 +1,51 @@
+[
+  {
+    "label": "NASAGIBS.ModisTerraSnowCover",
+    "id": "NASAGIBS.ModisTerraSnowCover",
+    "about": "Worldwide Snow Cover by United States of America's National Aeronautics and Space Administratrion",
+    "type": "OSM",
+    "source": {
+      "uriTemplate": "https://map1.vis.earthdata.nasa.gov/wmts-webmerc/MODIS_Terra_Snow_Cover/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}",
+      "opts": {
+        "attribution": "Imagery provided by services from the Global Imagery Browse Services (GIBS), operated by the NASA/GSFC/Earth Science Data and Information System (<a href='https://earthdata.nasa.gov'>ESDIS</a>) with funding provided by NASA/HQ.",
+        "bounds": [[-85.0511287776, -179.999999975], [85.0511287776, 179.999999975]],
+        "minZoom": 1,
+        "maxZoom": 8,
+        "format": "png",
+        "time": "",
+        "tilematrixset": "GoogleMapsCompatible_Level",
+        "opacity": 0.75
+      }
+    }
+  },
+  {
+    "label": "Stamen TonerLines",
+    "id": "Stamen TonerLines",
+    "type": "OSM",
+    "source": {
+      "uriTemplate": "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}",
+      "opts": {
+        "attribution": "Map tiles by <a href='http://stamen.com'>Stamen Design</a>, <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a> &mdash; Map data &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+        "subdomains": "abcd",
+        "minZoom": 0,
+        "maxZoom": 20,
+        "ext": "png"
+      }
+    }
+  },
+  {
+    "label": "Stamen TonerLabels",
+    "id": "Stamen TonerLabels",
+    "type": "OSM",
+    "source": {
+      "uriTemplate": "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}",
+      "opts": {
+        "attribution": "Map tiles by <a href='http://stamen.com'>Stamen Design</a>, <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a> &mdash; Map data &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+        "subdomains": "abcd",
+        "minZoom": 0,
+        "maxZoom": 20,
+        "ext": "png"
+      }
+    }
+  }
+]
