@@ -1,0 +1,19 @@
+{
+  "domElementId": "map",
+  "view": {
+    "center": [50.733992, 7.099814],
+    "zoom": 13
+  },
+  "placeHolderBaseLayer": {
+    "label": "PlaceholderBaseLayer",
+    "id": "PlaceholderBaseLayer",
+    "about": "A placeholder when no layer is present",
+    "type": "OSM",
+    "source": {
+      "uriTemplate": "nothing.png",
+      "opts": {
+        "attribution": "no map loaded"
+      }
+    }
+  }
+}
