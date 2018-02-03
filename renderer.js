@@ -1,4 +1,5 @@
-const {app, dialog, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu} = require('electron')
+const { LayerEditor } = require('./lib/mapviewer/LayerEditor')
 const path = require('path')
 const url = require('url')
 const fs = require('fs')
@@ -102,10 +103,10 @@ fs.readFile('config/menutemplate.json', (err, data) => {
     baseLayerSubMenu.push({
       'label': 'Edit Baselayers',
       click: () => {
-        dialog.showMessageBox({
-          'title': 'not implemented',
-          'message': 'This function is not implemented yet.',
-          'buttons': ['OK']
+        let baseLayerEditor = new LayerEditor()
+        baseLayerEditor.open({
+          'name': 'Baselayers',
+          'path': './config/baselayers.json'
         })
       }
     })
@@ -127,10 +128,10 @@ fs.readFile('config/menutemplate.json', (err, data) => {
       featureLayerSubMenu.push({
         'label': 'Edit Featurelayers',
         click: () => {
-          dialog.showMessageBox({
-            'title': 'not implemented',
-            'message': 'This function is not implemented yet.',
-            'buttons': ['OK']
+          let featureLayerEditor = new LayerEditor()
+          featureLayerEditor.open({
+            'name': 'featureLayers',
+            'path': './config/featurelayers.json'
           })
         }
       })
