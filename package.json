@@ -2,9 +2,13 @@
   "name": "mapviewer",
   "version": "0.0.1",
   "description": "A simple mapviewer",
-  "main": "index.js",
+  "main": "renderer.js",
   "scripts": {
-    "start": "electron ./"
+    "start": "electron ./",
+    "test": "npm run test-html && npm run test-js && npm run test-json",
+    "test-html": "eslint  --ext .html .",
+    "test-js": "standard",
+    "test-json": "jsonlint -q config/*"
   },
   "author": "Josef Schugt",
   "repository": {
@@ -12,9 +16,23 @@
     "url": "https://github.com/penpendede/mapviewer.git"
   },
   "license": "MIT",
+  "standard": {
+    "ignore": [
+      "leaflet"
+    ]
+  },
   "devDependencies": {
-    "electron": "^1.7.11",
+    "electron": "^1.8.1",
+    "eslint": "^4.17.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-markdown": "^1.0.0-beta.7",
+    "eslint-plugin-standard": "^3.0.1",
+    "jsonlint": "^1.6.2",
     "leaflet": "^1.3.1",
-    "standard": "^10.0.3"
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
+    "standard-json": "^1.0.2",
+    "standard-reporter": "^1.0.5",
+    "standard-summary": "^1.0.0"
   }
 }
