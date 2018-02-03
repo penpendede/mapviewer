@@ -1,4 +1,5 @@
 const {app, BrowserWindow, Menu} = require('electron')
+const { LayerEditor } = require('./lib/mapviewer/LayerEditor')
 const path = require('path')
 const url = require('url')
 const fs = require('fs')
@@ -96,6 +97,19 @@ fs.readFile('config/menutemplate.json', (err, data) => {
         }
       })
     }
+    baseLayerSubMenu.push({
+      'type': 'separator'
+    })
+    baseLayerSubMenu.push({
+      'label': 'Edit Baselayers',
+      click: () => {
+        let baseLayerEditor = new LayerEditor()
+        baseLayerEditor.open({
+          'name': 'Baselayers',
+          'path': './config/baselayers.json'
+        })
+      }
+    })
     fs.readFile('config/featurelayers.json', (err, data) => {
       if (err) throw err
       let featureLayerSubMenu = []
@@ -108,6 +122,19 @@ fs.readFile('config/menutemplate.json', (err, data) => {
           }
         })
       }
+      featureLayerSubMenu.push({
+        'type': 'separator'
+      })
+      featureLayerSubMenu.push({
+        'label': 'Edit Featurelayers',
+        click: () => {
+          let featureLayerEditor = new LayerEditor()
+          featureLayerEditor.open({
+            'name': 'featureLayers',
+            'path': './config/featurelayers.json'
+          })
+        }
+      })
       menuTemplate[3] = {
         'label': 'Baselayers',
         'submenu': baseLayerSubMenu
