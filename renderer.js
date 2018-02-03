@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, dialog, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const url = require('url')
 const fs = require('fs')
@@ -96,6 +96,19 @@ fs.readFile('config/menutemplate.json', (err, data) => {
         }
       })
     }
+    baseLayerSubMenu.push({
+      'type': 'separator'
+    })
+    baseLayerSubMenu.push({
+      'label': 'Edit Baselayers',
+      click: () => {
+        dialog.showMessageBox({
+          'title': 'not implemented',
+          'message': 'This function is not implemented yet.',
+          'buttons': ['OK']
+        })
+      }
+    })
     fs.readFile('config/featurelayers.json', (err, data) => {
       if (err) throw err
       let featureLayerSubMenu = []
@@ -108,6 +121,19 @@ fs.readFile('config/menutemplate.json', (err, data) => {
           }
         })
       }
+      featureLayerSubMenu.push({
+        'type': 'separator'
+      })
+      featureLayerSubMenu.push({
+        'label': 'Edit Featurelayers',
+        click: () => {
+          dialog.showMessageBox({
+            'title': 'not implemented',
+            'message': 'This function is not implemented yet.',
+            'buttons': ['OK']
+          })
+        }
+      })
       menuTemplate[3] = {
         'label': 'Baselayers',
         'submenu': baseLayerSubMenu
