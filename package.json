@@ -1,15 +1,16 @@
 {
   "name": "mapviewer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple mapviewer",
   "main": "renderer.js",
   "scripts": {
     "precommit": "npm test",
     "start": "electron ./",
-    "test": "npm run test-html && npm run test-js && npm run test-json",
+    "test": "npm run test-html && npm run test-js && npm run test-json && npm run test-json-schema",
     "test-html": "eslint  --ext .html .",
     "test-js": "standard",
-    "test-json": "jsonlint -q config/*"
+    "test-json": "jsonlint -q config/*",
+    "test-json-schema": "node tools/json-schema-checker.js"
   },
   "author": "Josef Schugt",
   "repository": {
@@ -23,6 +24,7 @@
     ]
   },
   "devDependencies": {
+    "argparse": "^1.0.9",
     "electron": "^1.8.1",
     "eslint": "^4.17.0",
     "eslint-plugin-html": "^4.0.2",
@@ -30,6 +32,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "jsonlint": "^1.6.2",
+    "jsonschema": "^1.2.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "standard-json": "^1.0.2",
