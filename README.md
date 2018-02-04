@@ -6,4 +6,4 @@
 A simple program to view maps based on [electron](https://electronjs.org), [leaflet](http://leafletjs.com) and my
 experience with [guide4you](https://github.com/KlausBenndorf/guide4you).
 
-[![atom](./atom-icon.png)](http://atom.io)
+[![atom](./atom-icon.png)](http://atom.io) What other editor would you possibly use for writing electron software?
