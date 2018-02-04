@@ -2,4 +2,4 @@
 
 For now this document is minimal.
 
-I currently use these pages to host the projects' JSON schemata (not yet used).
+I currently use these pages to host the project's JSON schemata (not yet used).
