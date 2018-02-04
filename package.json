@@ -5,7 +5,6 @@
   "main": "renderer.js",
   "scripts": {
     "precommit": "npm test",
-    "prepush": "npm test",
     "start": "electron ./",
     "test": "npm run test-html && npm run test-js && npm run test-json",
     "test-html": "eslint  --ext .html .",
