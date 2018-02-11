@@ -1,0 +1,11 @@
+{
+  "id": "/layerOpts",
+  "type": "object",
+  "properties": {
+    "attribution": { "type": "string" },
+    "bounds": { "type": { "$ref": "/latLngBounds" } },
+    "maxZoom": { "type": "number" },
+    "minZoom": { "type": "number" },
+    "opacity": { "type": "number" }
+  }
+}

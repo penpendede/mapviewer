@@ -1,0 +1,8 @@
+{
+  "id": "/view",
+  "type": "object",
+  "properties": {
+    "center": { "type": { "$ref": "/point" } },
+    "zoom": { "type": "number" }
+  }
+}
