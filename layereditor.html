@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mapviewer : Edit JSON file</title>
+    <link href="node_modules/jsoneditor/dist/jsoneditor.css" rel="stylesheet" type="text/css">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html, body, #jsoneditor {
+        height: 100%;
+        width: 100%;
+      }
+      #jsoneditor > div {
+        border: 0;
+      }
+    </style>
+</head>
+<body>
+<div id="jsoneditor"></div>
+<script>
+  const { ipcRenderer } = require('electron')
+  const JSONEditor = require('jsoneditor')
+  let editor
+
+  ipcRenderer.on('set-jsoneditor-data', (event, arg) => {
+    console.log(arg)
+    editor = new JSONEditor(document.getElementById('jsoneditor'), {
+      'mode': 'tree',
+      'modes': ['code', 'form', 'text', 'tree', 'view'],
+      'schema': arg.schema,
+      'schemaRefs': arg.schemaRefs
+    }, arg.json)
+    editor.expandAll()
+  })
+</script>
+</body>
+</html>

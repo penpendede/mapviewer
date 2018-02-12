@@ -1,0 +1,10 @@
+{
+  "id": "/startupConfig",
+  "type": "object",
+  "properties": {
+    "domElementId": { "type": "string" },
+    "view": { "$ref": "/view" },
+    "placeHolderBaseLayer": { "$ref": "/layer" }
+  },
+  "required": [ "domElementId" ]
+}

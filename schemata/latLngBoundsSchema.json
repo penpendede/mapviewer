@@ -1,0 +1,7 @@
+{
+  "id": "/latLngBounds",
+  "type": "array",
+  "items": { "$ref": "/point" },
+  "minItems": 2,
+  "maxItems": 2
+}

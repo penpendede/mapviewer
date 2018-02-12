@@ -1,0 +1,12 @@
+{
+  "id": "/layer",
+  "type": "object",
+  "properties": {
+    "label": { "type": "string" },
+    "id": { "type": "string" },
+    "about": { "type": "string" },
+    "type": { "type": "string" },
+    "source": { "$ref": "/layerSource" }
+  },
+  "required": ["label", "id", "type", "source"]
+}

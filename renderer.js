@@ -1,5 +1,6 @@
 const {app, BrowserWindow, Menu} = require('electron')
-const { LayerEditor } = require('./lib/mapviewer/LayerEditor')
+const { BaseLayerEditor } = require('./lib/mapviewer/BaseLayerEditor')
+const { FeatureLayerEditor } = require('./lib/mapviewer/FeatureLayerEditor')
 const path = require('path')
 const url = require('url')
 const fs = require('fs')
@@ -7,6 +8,8 @@ const fs = require('fs')
 let win
 let menuTemplate
 let menu
+let baseLayerEditor
+let featureLayerEditor
 
 fs.readFile('config/menutemplate.json', (err, data) => {
   if (err) throw err
@@ -97,19 +100,22 @@ fs.readFile('config/menutemplate.json', (err, data) => {
         }
       })
     }
-    baseLayerSubMenu.push({
-      'type': 'separator'
-    })
-    baseLayerSubMenu.push({
-      'label': 'Edit Baselayers',
-      click: () => {
-        let baseLayerEditor = new LayerEditor()
-        baseLayerEditor.open({
-          'name': 'Baselayers',
-          'path': './config/baselayers.json'
-        })
-      }
-    })
+    if (!baseLayerEditor) {
+      baseLayerSubMenu.push({
+        'type': 'separator'
+      })
+      baseLayerSubMenu.push({
+        'label': 'Edit Baselayers',
+        click: () => {
+          baseLayerEditor = new BaseLayerEditor()
+          baseLayerEditor.open({
+            'name': 'Baselayers',
+            'path': path.join(__dirname, './config/baselayers.json'),
+            'mainWindow': win
+          })
+        }
+      })
+    }
     fs.readFile('config/featurelayers.json', (err, data) => {
       if (err) throw err
       let featureLayerSubMenu = []
@@ -128,10 +134,11 @@ fs.readFile('config/menutemplate.json', (err, data) => {
       featureLayerSubMenu.push({
         'label': 'Edit Featurelayers',
         click: () => {
-          let featureLayerEditor = new LayerEditor()
+          featureLayerEditor = new FeatureLayerEditor()
           featureLayerEditor.open({
             'name': 'featureLayers',
-            'path': './config/featurelayers.json'
+            'path': path.join(__dirname, './config/featurelayers.json'),
+            'mainWindow': win
           })
         }
       })
@@ -150,12 +157,20 @@ fs.readFile('config/menutemplate.json', (err, data) => {
 })
 
 let createWindow = () => {
-  win = new BrowserWindow({width: 1000, height: 800})
+  win = new BrowserWindow({
+    'width': 1000,
+    'height': 800,
+    'show': false
+  })
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
+
+  win.once('ready-to-show', () => {
+    win.show()
+  })
 
   win.on('closed', () => {
     win = null
@@ -163,6 +178,7 @@ let createWindow = () => {
 }
 
 app.on('ready', createWindow)
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()

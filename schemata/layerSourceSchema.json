@@ -1,0 +1,9 @@
+{
+  "id": "/layerSource",
+  "type": "object",
+  "properties": {
+    "uriTemplate": { "type": "string" },
+    "opts": { "$ref": "/layerOpts" }
+  },
+  "required": ["uriTemplate"]
+}
