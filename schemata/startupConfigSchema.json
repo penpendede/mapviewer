@@ -3,8 +3,8 @@
   "type": "object",
   "properties": {
     "domElementId": { "type": "string" },
-    "view": { "type": { "$ref": "/view" } },
-    "placeHolderBaseLayer": { "type": { "$ref": "/layer" } }
+    "view": { "$ref": "/view" },
+    "placeHolderBaseLayer": { "$ref": "/layer" }
   },
   "required": [ "domElementId" ]
 }

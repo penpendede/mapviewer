@@ -2,7 +2,7 @@
   "id": "/view",
   "type": "object",
   "properties": {
-    "center": { "type": { "$ref": "/point" } },
+    "center": { "$ref": "/point" },
     "zoom": { "type": "number" }
   }
 }

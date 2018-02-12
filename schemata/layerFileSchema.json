@@ -1,5 +1,5 @@
 {
   "id": "/layerFile",
   "type": "array",
-  "items": { "type": { "$ref": "/layer" } }
+  "items": { "$ref": "/layer" }
 }

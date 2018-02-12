@@ -19,15 +19,15 @@ parser.addArgument(
 
 let args = parser.parseArgs()
 
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/pointSchema.json', 'utf8')), '/point')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/latLngBoundsSchema.json', 'utf8')), '/latLngBounds')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/subDomainSchema.json', 'utf8')), '/subDomain')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerOptsSchema.json', 'utf8')), '/layerOpts')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerSourceSchema.json', 'utf8')), '/layerSource')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerSchema.json', 'utf8')), '/layer')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerFileSchema.json', 'utf8')), '/layerFile')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/viewSchema.json', 'utf8')), '/view')
-validator.addSchema(JSON.parse(fs.readFileSync('./schemata/startupConfigSchema.json', 'utf8')), '/startupConfig')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/pointSchema.json', 'utf8')), 'point')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/latLngBoundsSchema.json', 'utf8')), 'latLngBounds')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/subDomainsSchema.json', 'utf8')), 'subDomains')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerOptsSchema.json', 'utf8')), 'layerOpts')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerSourceSchema.json', 'utf8')), 'layerSource')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerSchema.json', 'utf8')), 'layer')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/layerFileSchema.json', 'utf8')), 'layerFile')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/viewSchema.json', 'utf8')), 'view')
+validator.addSchema(JSON.parse(fs.readFileSync('./schemata/startupConfigSchema.json', 'utf8')), 'startupConfig')
 
 let abortIfValidationFails = (fileName, verbose, validationResult) => {
   if (!validationResult.valid) {

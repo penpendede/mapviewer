@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "uriTemplate": { "type": "string" },
-    "opts": { "type": { "$ref": "/layerOpts" } }
+    "opts": { "$ref": "/layerOpts" }
   },
   "required": ["uriTemplate"]
 }

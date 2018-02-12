@@ -3,9 +3,10 @@
   "type": "object",
   "properties": {
     "attribution": { "type": "string" },
-    "bounds": { "type": { "$ref": "/latLngBounds" } },
+    "bounds": { "$ref": "/latLngBounds" },
     "maxZoom": { "type": "number" },
     "minZoom": { "type": "number" },
-    "opacity": { "type": "number" }
+    "opacity": { "type": "number" },
+    "subdomains": { "$ref": "/subDomains" }
   }
 }

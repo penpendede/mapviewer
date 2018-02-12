@@ -6,7 +6,7 @@
     "id": { "type": "string" },
     "about": { "type": "string" },
     "type": { "type": "string" },
-    "source": { "type": { "$ref": "/layerSource" } }
+    "source": { "$ref": "/layerSource" }
   },
   "required": ["label", "id", "type", "source"]
 }

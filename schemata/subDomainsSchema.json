@@ -1,12 +1,10 @@
 {
-  "id": "/subDomain",
+  "id": "/subDomains",
   "oneOf": [
     { "type": "string" },
     {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
+      "items": { "type": "string" },
       "minItems": 1
     }
   ]

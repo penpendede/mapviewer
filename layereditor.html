@@ -23,19 +23,17 @@
 <script>
   const { ipcRenderer } = require('electron')
   const JSONEditor = require('jsoneditor')
-
-  let editor = new JSONEditor(document.getElementById('jsoneditor'), {
-    'mode': 'tree',
-    'modes': ['code', 'form', 'text', 'tree', 'view']
-  })
+  let editor
 
   ipcRenderer.on('set-jsoneditor-data', (event, arg) => {
-    let checkEditorIsReady = setInterval(() => {
-      if (editor && editor.set) {
-        editor.set(arg)
-        clearInterval(checkEditorIsReady)
-      }
-    }, 100)
+    console.log(arg)
+    editor = new JSONEditor(document.getElementById('jsoneditor'), {
+      'mode': 'tree',
+      'modes': ['code', 'form', 'text', 'tree', 'view'],
+      'schema': arg.schema,
+      'schemaRefs': arg.schemaRefs
+    }, arg.json)
+    editor.expandAll()
   })
 </script>
 </body>
